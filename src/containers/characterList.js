@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
-import GetCharacterList from '../actions/characterActions';
+import GetCharacterList from '../actions/characterListAction';
 
 const characterList = () => {
   const dispatch = useDispatch();
