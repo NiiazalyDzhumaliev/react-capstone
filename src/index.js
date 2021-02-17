@@ -6,14 +6,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import characterReducer from './reducers/character';
-import charactersListReducer from './reducers/characterList';
+import characterListReducer from './reducers/characterList';
 import characterFilterReducer from './reducers/characterFilter';
 import './index.css';
 import App from './components/App';
 
 const rootReducer = combineReducers({
   char: characterReducer,
-  charList: charactersListReducer,
+  charList: characterListReducer,
   charFilter: characterFilterReducer,
 });
 
