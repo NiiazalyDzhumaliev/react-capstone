@@ -22,6 +22,7 @@ const characterListReducer = (state = DefaultState, action) => {
         ...state,
         loading: false,
         data: action.payload,
+        error: '',
       };
     default:
       return state;
