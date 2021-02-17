@@ -2,6 +2,7 @@ const DefaultState = {
   loading: false,
   data: [],
   error: '',
+  count: 0,
 };
 
 const characterListReducer = (state = DefaultState, action) => {
@@ -23,6 +24,7 @@ const characterListReducer = (state = DefaultState, action) => {
         loading: false,
         data: action.payload,
         error: '',
+        count: action.payload.count,
       };
     default:
       return state;

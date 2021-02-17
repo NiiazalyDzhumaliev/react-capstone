@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 import GetCharacterList from '../actions/characterActions';
 
 const characterList = () => {
@@ -15,7 +17,13 @@ const characterList = () => {
 
   const showData = () => {
     if (!_.isEmpty(characterList.data)) {
-      return <p>have data</p>;
+      return characterList.data.map(character => (
+        <ul key={uuidv4()}>
+          <li>{character.name}</li>
+
+          <Link to={`/character/${character.name}`}>View</Link>
+        </ul>
+      ));
     }
 
     if (characterList.loading) {

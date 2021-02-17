@@ -17,7 +17,7 @@ const GetCharacterList = page => async dispatch => {
     const result = await axios.get(url);
     dispatch({
       type: 'CHARACTER_LIST_SUCCESS',
-      payload: result.data,
+      payload: result.data.data.results,
     });
   } catch (error) {
     dispatch({
