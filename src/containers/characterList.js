@@ -10,7 +10,7 @@ const characterList = () => {
     dispatch(GetCharacterList(page));
   };
   useEffect(() => {
-    fetchData(1);
+    fetchData();
   }, []);
 
   const showData = () => {
