@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import axios from 'axios';
+import { getApiHash } from 'marvel-api-hash-generator';
+import { Switch, Route } from 'react-router-dom';
 import '../App.css';
-
-const { getApiHash } = require('marvel-api-hash-generator');
 
 const App = () => {
   const timeStamp = 1;
@@ -10,7 +10,8 @@ const App = () => {
   const publicKey = '14946262ad54655fac24826eeceeb49b';
   const hashValue = getApiHash(timeStamp, privateKey, publicKey);
 
-  const requestConstantCharacters = 'https://gateway.marvel.com/v1/public/series/9085/characters?';
+  const requestConstantCharacters =
+    'https://gateway.marvel.com/v1/public/series/9085/characters?';
 
   const exampleUrl = `${requestConstantCharacters}ts=${timeStamp}&apikey=${publicKey}&hash=${hashValue}`;
 
@@ -24,7 +25,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Switch>
+        <Route path={'/'} exact component={characterList} />
+      </Switch>
     </div>
   );
 };
