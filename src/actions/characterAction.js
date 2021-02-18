@@ -18,7 +18,6 @@ const GetCharacter = character => async dispatch => {
       payload: result.data.data.results,
       characterName: character,
     });
-    console.log(result.data.data.results);
   } catch (error) {
     dispatch({
       type: 'CHARACTER_MULTIPLE_FAIL',
