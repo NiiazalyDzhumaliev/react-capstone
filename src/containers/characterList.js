@@ -22,6 +22,10 @@ const characterList = () => {
           <li>{character.name}</li>
 
           <Link to={`/character/${character.name}`}>View</Link>
+          <img
+            alt="marvel"
+            src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+          />
         </ul>
       ));
     }
