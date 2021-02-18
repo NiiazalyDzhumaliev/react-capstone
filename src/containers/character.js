@@ -17,7 +17,6 @@ const Character = () => {
   const showData = () => {
     if (!_.isEmpty(characterState.data[encodeChar])) {
       const charData = characterState.data[encodeChar][0];
-      console.log(charData);
       return (
         <div>
           <img
@@ -25,7 +24,7 @@ const Character = () => {
             src={`${charData.thumbnail.path}.${charData.thumbnail.extension}`}
           />
           <div>
-            <p>hello</p>
+            <p>{charData.description}</p>
           </div>
         </div>
       );

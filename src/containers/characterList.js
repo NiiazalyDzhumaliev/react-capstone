@@ -17,8 +17,6 @@ const characterList = () => {
 
   const showData = () => {
     if (!_.isEmpty(characterList.data)) {
-      const noImageURL =
-        'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available';
       return characterList.data.map(character => (
         <ul key={uuidv4()}>
           <li>{character.name}</li>
