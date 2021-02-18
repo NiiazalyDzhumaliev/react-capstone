@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import GetCharacterList from '../actions/characterListAction';
 
 const characterList = () => {
+  const [search, setSearch] = useState('');
+  const history = useHistory();
   const dispatch = useDispatch();
   const characterList = useSelector(state => state.charList);
   const fetchData = (page = 1) => {
@@ -39,7 +41,21 @@ const characterList = () => {
     }
     return <p>Unable to get data</p>;
   };
-  return <div>{showData()}</div>;
+  return (
+    <div>
+      <div>
+        <p>Search:</p>
+        <input type="text" onChange={e => setSearch(e.target.value)} />
+        <button
+          type="button"
+          onClick={() => history.push(`/character/${search}`)}
+        >
+          Submit
+        </button>
+      </div>
+      {showData()}
+    </div>
+  );
 };
 
 export default characterList;
