@@ -12,7 +12,7 @@ const GetCharacterList = page => async dispatch => {
     const hashValue = getApiHash(timeStamp, privateKey, publicKey);
     const perPage = 15;
     const offset = page * perPage - perPage;
-    const requestConstantCharacters = `https://gateway.marvel.com/v1/public/series/9085/characters?limit=${perPage}&offset=${offset}`;
+    const requestConstantCharacters = `https://gateway.marvel.com/v1/public/characters?limit=${perPage}&offset=${offset}`;
     const url = `${requestConstantCharacters}&ts=${timeStamp}&apikey=${publicKey}&hash=${hashValue}`;
     const result = await axios.get(url);
     dispatch({
