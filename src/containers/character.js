@@ -16,7 +16,15 @@ const Character = () => {
 
   const showData = () => {
     if (!_.isEmpty(characterState.data[encodeChar])) {
-      return <p>have data</p>;
+      const charData = characterState.data[encodeChar][0];
+      return (
+        <div>
+          <img
+            alt="character portrait"
+            src={`${charData.thumbnail.path}.${charData.thumbnail.extension}`}
+          />
+        </div>
+      );
     }
 
     if (characterState.loading) {
