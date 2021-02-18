@@ -17,8 +17,9 @@ const GetCharacterList = page => async dispatch => {
     const result = await axios.get(url);
     dispatch({
       type: 'CHARACTER_LIST_SUCCESS',
-      payload: result.data.data.results,
+      payload: result.data.data,
     });
+    console.log(result.data.data.total);
   } catch (error) {
     dispatch({
       type: 'CHARACTER_LIST_FAIL',
