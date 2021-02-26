@@ -22,7 +22,7 @@ const characterListReducer = (state = DefaultState, action) => {
       return {
         ...state,
         loading: false,
-        data: action.payload.results,
+        data: state.data.concat(action.payload.results),
         error: '',
         count: action.payload.total,
       };

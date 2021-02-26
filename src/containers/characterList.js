@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import _ from 'lodash';
-import ReactPaginate from 'react-paginate';
+// import _ from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import { Link, useHistory } from 'react-router-dom';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import GetCharacterList from '../actions/characterListAction';
 
 const CharacterList = () => {
@@ -19,27 +19,39 @@ const CharacterList = () => {
   }, []);
 
   const showData = () => {
-    if (characterList.loading) {
-      return <p>Loading...</p>;
-    }
-    if (!_.isEmpty(characterList.data)) {
-      return characterList.data.map(character => (
-        <ul key={uuidv4()}>
-          <li>{character.name}</li>
+    const noImageURL = 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg';
+    return (
+      <InfiniteScroll
+        dataLength={characterList.data.length}
+        next={() => fetchData(
+          characterList.data.length / 15 === 1
+            ? 2
+            : characterList.data.length / 15,
+        )}
+        hasMore
+        loader={<h4>Loading...</h4>}
+      >
+        {characterList.data.map(character => {
+          if (
+            noImageURL
+            !== `${character.thumbnail.path}.${character.thumbnail.extension}`
+          ) {
+            return (
+              <div key={uuidv4()}>
+                <p>{character.name}</p>
 
-          <Link to={`/character/${character.name}`}>View</Link>
-          <img
-            alt="marvel"
-            src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-          />
-        </ul>
-      ));
-    }
-
-    if (characterList.error !== '') {
-      return <p>{characterList.error}</p>;
-    }
-    return <p>Unable to get data</p>;
+                <Link to={`/character/${character.name}`}>View</Link>
+                <img
+                  alt="marvel"
+                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                />
+              </div>
+            );
+          }
+          return null;
+        })}
+      </InfiniteScroll>
+    );
   };
   return (
     <div>
@@ -54,14 +66,6 @@ const CharacterList = () => {
         </button>
       </div>
       {showData()}
-      {!_.isEmpty(characterList.data) && (
-        <ReactPaginate
-          pageCount={Math.ceil(characterList.count) / 15}
-          pageRangeDisplayed={2}
-          marginPagesDisplayed={1}
-          onPageChange={data => fetchData(data.selected + 1)}
-        />
-      )}
     </div>
   );
 };
