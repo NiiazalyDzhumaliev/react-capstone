@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import _ from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import { Link, useHistory } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
