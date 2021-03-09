@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Link, useHistory } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import GetCharacterList from '../actions/characterListAction';
+import style from '../styles/CharList.module.css';
 
 const CharacterList = () => {
   const [search, setSearch] = useState('');
@@ -29,6 +30,7 @@ const CharacterList = () => {
         )}
         hasMore
         loader={<h4>Loading...</h4>}
+        className={style.char_container}
       >
         {characterList.data.map(character => {
           if (
@@ -41,6 +43,7 @@ const CharacterList = () => {
 
                 <Link to={`/character/${character.name}`}>View</Link>
                 <img
+                  className={style.char_image}
                   alt="marvel"
                   src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                 />
