@@ -41,12 +41,14 @@ const CharacterList = () => {
               <div key={uuidv4()}>
                 <p>{character.name}</p>
 
-                <Link to={`/character/${character.name}`}>View</Link>
-                <img
-                  className={style.char_image}
-                  alt="marvel"
-                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                />
+                <Link to={`/character/${character.name}`}>
+                  {' '}
+                  <img
+                    className={style.char_image}
+                    alt="marvel"
+                    src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                  />
+                </Link>
               </div>
             );
           }
