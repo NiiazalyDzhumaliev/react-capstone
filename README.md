@@ -51,7 +51,7 @@ To get a local copy up and running follow these simple example steps.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/NiiazalyDzhumaliev/bookstore/issues).
+Feel free to check the [issues page](https://github.com/NiiazalyDzhumaliev/react-capstone/issues).
 
 ## Show your support
 
