@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import CharacterFilteredList from './filterList';
 import GetCharacterList from '../actions/characterListAction';
 import style from '../styles/CharList.module.css';
 
 const CharacterList = () => {
   const [search, setSearch] = useState('');
-  const history = useHistory();
   const dispatch = useDispatch();
   const characterList = useSelector(state => state.charList);
   const fetchData = (page = 1) => {
@@ -51,14 +51,8 @@ const CharacterList = () => {
       <div>
         <p>Search:</p>
         <input type="text" onChange={e => setSearch(e.target.value)} />
-        <button
-          type="button"
-          onClick={() => history.push(`/character/${search}`)}
-        >
-          Submit
-        </button>
       </div>
-      {showData()}
+      {search ? <CharacterFilteredList nameStarts={search} /> : showData()}
     </div>
   );
 };
