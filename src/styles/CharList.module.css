@@ -1,0 +1,15 @@
+.char_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.char_image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.char_name {
+  font-size: 14px;
+}
