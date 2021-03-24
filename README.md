@@ -37,7 +37,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Usage
 
-- You can use it as classic calculator
+- You can use it as Marvel Characters searcher
 
 ## Author
 
