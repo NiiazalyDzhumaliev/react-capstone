@@ -22,12 +22,13 @@ const CharacterList = () => {
     <InfiniteScroll
       dataLength={characterList.data.length}
       next={() => fetchData(
-        characterList.data.length / 15 === 1
+        characterList.data.length / 20 === 1
           ? 2
-          : characterList.data.length / 15,
+          : characterList.data.length / 20,
       )}
       hasMore
       loader={<h4>Loading...</h4>}
+      scrollThreshold={1}
       className={style.char_container}
     >
       {characterList.data.map(character => (
